@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Activity 01 | WDD 330</title>
+  <style>
+    label,
+    input {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>Activity 01</h1>
+    <label for="text01">Enter some text:
+      <input type="text" name="text01" id="text01">
+    </label>
+    <button type="button" onclick="writeToDiv()">Write to div</button>
+    <div id="output01"></div>
+  </section>
+
+  <section>
+    <h1>Activity 02</h1>
+    <label for="triNum">Input a number:
+      <input type="number" name="triNum" id="triNum" min=0 max=100>
+    </label>
+    <button type="button" onclick="triNum(parseFloat(document.getElementById('triNum').value))">Get Triangular
+      Number</button>
+    <div id="output02"></div>
+  </section>
+
+  <section>
+    <h1>Activity 03</h1>
+    <label for="calcNum01">First Number:
+      <input type="number" name="calcNum01" id="calcNum01">
+    </label>
+    <label for="calcNum02">Second Number:
+      <input type="number" name="calcNum02" id="calcNum02">
+    </label>
+    <button type="button" onclick="addTwo()">Get Sum</button>
+    <button type="button" onclick="multiply()">Get Product</button>
+    <button type="button" onclick="divide()">Get Quotient</button>
+    <button type="button" onclick="mean(addTwo())">Get Average</button>
+    <div id="output03"></div>
+  </section>
+
+  <script>
+    let cn1;
+    let cn2;
+
+    function writeToDiv() {
+      let inputData = document.getElementById('text01').value;
+      document.getElementById('output01').innerHTML = inputData;
+    }
+
+    function triNum(n) { //5
+      let result = 0;
+      let i = 0;
+      while (n > i) { //5 > 1
+        result += n - i; // 5 + 4
+        i++; //2
+      }
+      document.getElementById('output02').innerHTML = result;
+      return result;
+    }
+
+    function getCalcData() {
+      cn1 = parseFloat(document.getElementById('calcNum01').value);
+      cn2 = parseFloat(document.getElementById('calcNum02').value);
+    }
+
+    function addTwo() {
+      getCalcData();
+      document.getElementById('output03').innerHTML = cn1 + cn2;
+      return cn1 + cn2;
+    }
+    const multiply = () => {
+      getCalcData();
+      document.getElementById('output03').innerHTML = cn1 * cn2;
+    };
+
+    var divide = function () {
+      getCalcData();
+      document.getElementById('output03').innerHTML = (cn1 / cn2).toFixed(2);
+    };
+
+    const mean = (a) => {
+      document.getElementById('output03').innerHTML = a / 2
+    };
+
+
+  </script>
+</body>
+
+</html>
