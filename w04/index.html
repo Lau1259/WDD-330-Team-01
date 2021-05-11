@@ -4,14 +4,58 @@
 <head>
   <meta charset="UTF-8" />
   <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="css/grid.css">
 </head>
 
 <body>
-  
-    <script>
-        
-    </script>
 
+  <main>
+    <section class="div-container">
+      <h1>9x9 Grid: Divs</h1>
+      <!--
+      Code snippet to quickly make this grid in VS Code:
+      div.grid(div.grid-top*3+div.grid-mid*3+div.grid-bot*3)
+   -->
+      <!-- The grid has it's own style which is in the css folder. -->
+      <div class="grid" id="9x9">
+        <!-- Top row divs -->
+        <div class="grid-top" id="left-top">1</div>
+        <div class="grid-top" id="mid-top">2</div>
+        <div class="grid-top" id="right-top">3</div>
+        <!-- Middle row divs -->
+        <div class="grid-mid" id="left-mid">4</div>
+        <div class="grid-mid" id="mid-mid">5</div>
+        <div class="grid-mid" id="right-mid">6</div>
+        <!-- Bottom row divs -->
+        <div class="grid-bot" id="left-bot">7</div>
+        <div class="grid-bot" id="mid-bot">8</div>
+        <div class="grid-bot" id="right-bot">9</div>
+      </div>
+    </section>
+    <section class="table-container">
+      <h1>9x9 Grid: Table</h1>
+      <table>
+        <tr>
+          <td class="grid-top table-top" id="left">1</td>
+          <td class="grid-top table-top" id="mid">2</td>
+          <td class="grid-top table-top" id="right">3</td>
+        </tr>
+        <tr>
+          <td class="grid-mid table-mid" id="left">4</td>
+          <td class="grid-mid table-mid" id="mid">5</td>
+          <td class="grid-mid table-mid" id="right">6</td>
+        </tr>
+        <tr>
+          <td class="grid-bot table-bot" id="left">7</td>
+          <td class="grid-bot table-bot" id="mid">8</td>
+          <td class="grid-bot table-bot" id="right">9</td>
+        </tr>
+      </table>
+    </section>
+    <script>
+
+    </script>
+  </main>
 </body>
 
 </html>
