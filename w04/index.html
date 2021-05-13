@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Tic-Tac-Toe</title>
-  <link rel="stylesheet" href="grid.css">
+  <link rel="stylesheet" href="css/grid.css">
 
 </head>
 
@@ -60,15 +60,18 @@
       const player1 = 'X';
       const player2 = 'O';
       let player = player1;
-      
+
       //Add a piece function
       function addPiece(e) {
-        e.target.innerHTML = player;
+        // console.log('This is ' + e.target.innerHTML);
+        if (e.target.innerHTML === "") {
+          e.target.innerHTML = player;
 
-        if (player === player1)
-          player = player2;
-        else
-          player = player1;
+          if (player === player1)
+            player = player2;
+          else
+            player = player1;
+        }
       }
 
       //table
@@ -76,10 +79,19 @@
         for (let i = 0; i < board.rows.length; i++) {
           let row = board.rows[i];
           for (let j = 0; j < row.cells.length; j++) {
-            row.cells[j].innerHTML = ' ';
+            row.cells[j].innerHTML = '';
           }
         }
       }
+
+
+      // function checkTie(){
+
+      // }
+      // function checkWin(){
+
+      // }
+      //
       board.addEventListener('click', addPiece);
       reset.addEventListener('click', resetBoard);
     </script>
