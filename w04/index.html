@@ -11,6 +11,8 @@
 <body>
 
   <main>
+    <h1 id="output"></h1>
+
     <section class="div-container">
       <h1>9x9 Grid: Divs</h1>
       <!--
@@ -57,20 +59,75 @@
     <script>
       //Variables
       const board = document.querySelector('.board');
+      const output = document.querySelector('#output');
       const player1 = 'X';
       const player2 = 'O';
       let player = player1;
+      let boardValues = [];
+
+      function checkWin() {
+        let result = false;
+        for (let i = 0; i < boardValues.length - 2; i++) {
+          if (boardValues[i] !== "") {
+            if (boardValues[i] === boardValues[i + 1] && boardValues[i + 1] === boardValues[i + 2]) {
+              console.log('Horizontal Win');
+              result = true;
+            } else if ((boardValues[i] === boardValues[i + 3] && boardValues[i + 3] === boardValues[i + 6])) {
+              console.log('Vertical win');
+              result = true;
+            } else if ((boardValues[4] === boardValues[0] && boardValues[8]) || (boardValues[4] === boardValues[2] &&
+                boardValues[6])) {
+              console.log('Diagonal win');
+              result = true;
+            }
+          }
+        }
+        return result;
+      }
+
+
+      function checkTie() {
+        let stopGame = false;
+        let newValues = [];
+        for (let i = 0; i < board.rows.length; i++) {
+          let row = board.rows[i];
+          for (let j = 0; j < row.cells.length; j++) {
+            newValues.push(row.cells[j].innerHTML);
+          }
+        }
+        boardValues = newValues;
+        console.log(boardValues);
+        win = checkWin();
+        if (win) {
+          output.innerHTML = `${player} wins!`;
+          stopGame = true;
+        } else {
+          if (!boardValues.includes("")) {
+            output.innerHTML = 'TIE';
+            stopGame = true;
+          }
+        }
+        return stopGame;
+      }
 
       //Add a piece function
       function addPiece(e) {
         // console.log('This is ' + e.target.innerHTML);
         if (e.target.innerHTML === "") {
           e.target.innerHTML = player;
+          let stop = checkTie();
+          if (stop) {
+            board.removeEventListener('click', addPiece);
+          } else {
 
-          if (player === player1)
-            player = player2;
-          else
-            player = player1;
+            if (player === player1) {
+              player = player2;
+              output.innerHTML = `It's ${player}'s turn`;
+            } else {
+              player = player1;
+              output.innerHTML = `It's ${player}'s turn`;
+            }
+          }
         }
       }
 
@@ -82,16 +139,10 @@
             row.cells[j].innerHTML = '';
           }
         }
+        board.addEventListener('click', addPiece);
+        output.innerHTML = `It's ${player}'s turn`;
       }
 
-
-      // function checkTie(){
-
-      // }
-      // function checkWin(){
-
-      // }
-      //
       board.addEventListener('click', addPiece);
       reset.addEventListener('click', resetBoard);
     </script>

@@ -11,6 +11,9 @@ main {
   min-height: 100vh;
   background-color: #b8b8b8;
 }
+#output{
+  grid-column: 1/-1;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -70,4 +73,8 @@ td {
   width: 100px;
   margin: 0;
   padding: 0;
+}
+
+.div-container{
+  display: none;
 }
