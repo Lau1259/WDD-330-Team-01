@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="css/pokeStyle.css">
+</head>
+
+<body>
+  <main>
+    <h1>Welcome to the online Pokedex</h1>
+    <p class="intro">We welcome all who seek to learn more about the marvelous world of Pokemon. Type the name of any
+      Pokemno below to
+      get started, or their Pokedex id number.</p>
+    <!-- <input type="search" name="pokemon" id="pokemon" disabled>
+    <input type="button" value="Find Pokemon" onclick="getData()" disabled> -->
+    <div class="search">
+      <input type="number" name="pokemon" id="gen" min=1 max=7 value="1">
+      <input type="button" value="Find Pokemon" onclick="getData()">
+    </div>
+    <div id="poke-container">
+
+    </div>
+  </main>
+</body>
+<script src="fetchPoke.js"></script>
+
+</html>
