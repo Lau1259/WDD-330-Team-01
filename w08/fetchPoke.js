@@ -27,10 +27,31 @@ const displayData = (start = 0) => {
   let items = '';
   displayPokemon.forEach(p => {
     items += `<div class="pokemon">
-    <p class="poke-name">${p.name.charAt(0).toUpperCase() + p.name.slice(1)}<p>
-    <a href="${p.url}">More info about ${p.name}</a>
+    <p class="poke-name">${p.name.charAt(0).toUpperCase() + p.name.slice(1)}</p>
+    <div>
+    <button onclick="getMoreData(this,'${p.name}')">More info about ${p.name}</button>
+    </div>
     </div>
     `
   })
   container.innerHTML = items;
+}
+
+const getMoreData = (btn, name) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+
+  fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(pokemonData => {
+      let abilities = pokemonData["abilities"];
+      let div = btn.parentNode;
+      let text= "";
+      abilities.forEach(a => {
+        text += `<p>${a.ability.name}</p>`
+
+      })
+      div.innerHTML = text;
+    });
 }
