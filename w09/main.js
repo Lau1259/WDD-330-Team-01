@@ -1,4 +1,4 @@
-window.addEventListener('keydown', keyDown);
+const keyboardDown = window.addEventListener('keydown', keyDown);
 
 function keyDown(keyboardDown) {
     const audio = document.querySelector(`audio[data-key="${keyboardDown.keyCode}"]`);
@@ -11,9 +11,13 @@ function keyDown(keyboardDown) {
     audio.currentTime = 0;
     audio.play();
 
-    setTimeout(function(){
+    window.setTimeout( () => transitionBack(keyboardDown), 700);
+}
 
-    }, 0.07)
+function transitionBack(keyboardDown) {
+// alert('test');
+let key = document.querySelector(`[data-key="${keyboardDown.keyCode}"`);
+key.classList.remove('playing');
 }
 
 
