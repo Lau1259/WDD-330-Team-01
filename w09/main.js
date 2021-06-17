@@ -1,4 +1,5 @@
 const keyboardDown = window.addEventListener('keydown', keyDown);
+
 // I added an empty JavaScript Object so that I can add values as things are added.
 let pressed = {};
 
