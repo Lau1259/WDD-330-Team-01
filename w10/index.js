@@ -1,4 +1,4 @@
-import { getJSON, getLocation } from 'utilities.js';
+//import { getJSON, getLocation } from 'utilities.js';
 import QuakesController from './quakescontroller.js';
 
 
